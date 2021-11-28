@@ -1,0 +1,60 @@
+
+
+           
+ 
+{% extends 'animalerie/base.html' %}
+{% load static %}
+{% block content %}
+
+</br>    
+</br> 
+<h2 class='text-center header' >Je vous présente nos 5 animaux :</h2>
+</br>    
+
+          {% for animal in animals %}
+
+          <div class="card mb-3 p-3 mt-3 mx-auto container" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="/static/css/photos/{{animal.photo}}" class="img-thumbnail" alt="">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title"> Voici <a href="{% url 'animal_detail' id_animal=animal.id_animal %}">{{ animal.id_animal }}</a>!</h5>
+                  <p class="card-text">Son état : {{animal.etat}}</br>
+                    Le lieu qu'il occupe : {{animal.lieu}}</p>
+                  <p class="card-text"><small class="text-muted">Pour le changer de lieu, clique sur son nom</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %} 
+
+</br>    
+</br> 
+<h2 class='text-center header' >Et nos équipements :</h2>
+</br> 
+
+          {% for equipement in equipements %}
+
+          <div class="card mb-3 p-3 mt-3 mx-auto container" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="/static/css/photos/{{equipement.photo}}" class="img-thumbnail" alt="">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title"> Notre {{ equipement.id_equip }}</h5>
+                  <p class="card-text">Voici à quoi ressemble ce lieu ! </br>
+                    Actuellement, ce dernier est <strong>{{equipement.disponibilite}}</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %} 
+
+            
+            
+
+
+{% endblock %}
